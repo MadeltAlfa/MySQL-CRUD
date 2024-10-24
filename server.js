@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
         }
         const users =JSON.parse(JSON.stringify(result));
         console.log('hasil database -> ', users);
-    res.render('index', {users: users, title: 'Mahasiswa'});
+    res.render('index', {users: users, title: 'MAHASISWA'});
     });   
 });
 
@@ -49,8 +49,8 @@ app.post('/hapus/:nama', (req, res) => {
 });
 
 app.post('/tambah', (req, res) => {
-    const { nama, kelas } = req.body;
-    const sql = `INSERT INTO mhs (nama, kelas) VALUES ('${nama}', '${kelas}')`;
+    const { nama, fakultas } = req.body;
+    const sql = `INSERT INTO mhs (nama, fakultas) VALUES ('${nama}', '${fakultas}')`;
     db.query(sql, (err, result) => {
         if(err) {
             throw err;
@@ -60,6 +60,30 @@ app.post('/tambah', (req, res) => {
     });
 });
 
-app.listen(8000, () => {
+app.post('/edit', (req, res) => {
+    const { id, nama, fakultas } = req.body;
+    const sql = `UPDATE mhs SET nama = '${nama}', fakultas = '${fakultas}' WHERE id = ${id}`;
+    db.query(sql, (err, result) => {
+        if(err) {
+            throw err;
+        }
+        console.log('data di ubah');
+        res.redirect('/');
+    });
+});
+
+app.get('/cari/:nama', (req, res) => {
+    const { nama } = req.params;
+    const sql = `SELECT * FROM mhs WHERE nama = ?`;
+    db.query(sql, [nama], (err, result) => {
+        if(err) {
+        throw err;
+        }
+        const users = JSON.parse(JSON.stringify(result));
+        res.render('index', {users: users, title: 'MAHASISWA'});
+    });
+});
+
+app.listen(8080, () => {
     console.log('Server running on port 8000');
 })
