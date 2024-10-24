@@ -72,16 +72,15 @@ app.post('/edit', (req, res) => {
     });
 });
 
-app.get('/cari/:nama', (req, res) => {
-    const { nama } = req.params;
-    const sql = `SELECT * FROM mhs WHERE nama = ?`;
-    db.query(sql, [nama], (err, result) => {
-        if(err) {
-        throw err;
-        }
-        const users = JSON.parse(JSON.stringify(result));
-        res.render('index', {users: users, title: 'MAHASISWA'});
-    });
+app.get('/cari', (req, res) => {
+  const sql = ' select * from mhs where nama like "%'+req.query.nama+'%"';  
+  db.query(sql, (err, result) => {
+    if (err) {
+      throw err;
+    }
+    const users = JSON.parse(JSON.stringify(result));
+    res.render('index', { users: users, title: 'MAHASISWA' });
+  });
 });
 
 app.listen(8080, () => {
