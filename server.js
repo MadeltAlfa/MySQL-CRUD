@@ -73,9 +73,9 @@ app.post('/edit', (req, res) => {
 });
 
 app.get('/cari/:nama', (req, res) => {
-    const { nama } = req.params;
-    const sql = `SELECT * FROM mhs WHERE nama = ?`;
-    db.query(sql, [nama], (err, result) => {
+    const { nama } = encodeURIComponent(req.params.nama);
+    const sql = `SELECT nama FROM mhs WHERE nama LIKE '${nama}'`;
+    db.query(sql, (err, result) => {
         if(err) {
         throw err;
         }
