@@ -7,8 +7,30 @@
     <title>Data</title>
 </head>
 <body class="bg-dark"">
-    <div class ="container">
-        <h1 class="text-center mt-5 mb-3 text-light"><%= title %></h1>
+
+  
+  <div class ="container" style="max-width: 100vh;">
+    <div class="row gx-5 justify-content-evenly">
+
+          <div class="col-sm-6 col-md-8">
+            <h1 class="text-start mt-5 mb-3 text-light"><%= title %></h1>
+  
+          </div>
+
+          <div class="col-6 col-md-4">
+
+            <form action="/cari" method="get">
+                <input placeholder="Masukkan Nama" type="text" name="nama" class="bg-dark text-light mt-3 form-control">
+                <input type="submit" class="mt-3 btn btn-outline-success" value="Cari">  
+              <form class="" action="/" method="get">
+                  <input type="submit" class="mt-3 btn btn-outline-warning" value="Kembali">
+                </form>
+            </form>
+          </div>
+
+        </div>
+
+
 
         <div class="row gx-5 mt-3 align-items-center max-width-md">
 
@@ -43,34 +65,17 @@
 
           <div class="row gx-5 mt-5 text-light">
 
-
-            <div class="col">
-              <form action="/cari" method="get">
-                <h3 class="mb-3">CARI MAHASISWA</h3>
-                <div class="row mb-3">
-                  <label for="nama" class="col-sm-2 col-form-label">Nama</label>
-                  <div class="col-sm-10">
-                    <input type="text" name="nama" class="form-control">
-                  </div>
-                </div>
-                <input type="submit" class="btn btn-outline-success" value="Cari">
-                </form>
-            </div>
-
-
             <div class="col">
                 <form action="/tambah" method="post">
                     <h3 class="mb-3">TAMBAH MAHASISWA</h3>
                     <div class="row mb-3">
-                      <label for="nama" class="col-sm-2 col-form-label">Nama</label>
                       <div class="col-sm-10">
-                        <input type="text" name="nama" class="form-control">
+                        <input placeholder="Masukkan Nama" type="text" name="nama" class="bg-dark text-light form-control">
                       </div>
                     </div>
                     <div class="row mb-3">
-                      <label for="kelas" class="col-sm-2 col-form-label">Fakultas</label>
                       <div class="col-sm-10">
-                        <input type="text" name="fakultas" class="form-control">
+                        <input placeholder="Masukkan Fakultas" type="text" name="fakultas" class="bg-dark text-light form-control">
                       </div>
                     </div>
                     <input type="submit" class="btn btn-outline-primary" value="Tambahkan">
@@ -82,23 +87,20 @@
                     <h3 class="mb-3">EDIT MAHASISWA</h3>
 
                     <div class="row mb-3">
-                        <label for="nama" class="col-sm-2 col-form-label">No</label>
                         <div class="col-sm-10">
-                          <input type="text" name="id" class="form-control">
+                          <input placeholder="No" type="text" name="id" class="bg-dark text-light form-control">
                         </div>
                       </div>
 
                     <div class="row mb-3">
-                      <label for="nama" class="col-sm-2 col-form-label">Nama</label>
                       <div class="col-sm-10">
-                        <input type="text" name="nama" class="form-control">
+                        <input placeholder="Masukkan Nama" type="text" name="nama" class="bg-dark text-light form-control">
                       </div>
                     </div>
 
                     <div class="row mb-3">
-                      <label for="kelas" class="col-sm-2 col-form-label">Fakultas</label>
                       <div class="col-sm-10">
-                        <input type="text" name="fakultas" class="form-control">
+                        <input placeholder="Masukkan Fakultas" type="text" name="fakultas" class="bg-dark text-light form-control">
                       </div>
                     </div>
                     <input type="submit" class="btn btn-outline-warning text-light" value="Edit">
@@ -108,11 +110,12 @@
           </div>
 
 
-          <div class="footer">
-
-          </div>
-
     </div>
+    <footer class="text-light mt-5">
+        <div class="container">
+            <p class="text-center">Copyright &copy; Jemlok Code IDX</p>
+        </div>
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
 </body>

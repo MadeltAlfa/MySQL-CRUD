@@ -72,17 +72,16 @@ app.post('/edit', (req, res) => {
     });
 });
 
-app.get('/cari/:nama', (req, res) => {
-    const { nama } = encodeURIComponent(req.params.nama);
-    const sql = `SELECT nama FROM mhs WHERE nama LIKE '${nama}'`;
+app.get('/cari', (req, res) => {
+    const sql = 'SELECT * FROM mhs WHERE nama LIKE "%'+req.query.nama+'%"';  
     db.query(sql, (err, result) => {
-        if(err) {
+      if (err) {
         throw err;
-        }
-        const users = JSON.parse(JSON.stringify(result));
-        res.render('index', {users: users, title: 'MAHASISWA'});
+      }
+      const users = JSON.parse(JSON.stringify(result));
+      res.render('index', { users: users, title: 'MAHASISWA' });
     });
-});
+  });
 
 app.listen(8080, () => {
     console.log('Server running on port 8000');
